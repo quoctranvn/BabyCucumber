@@ -31,7 +31,7 @@
                 <version>${mavensurefire.version}</version>
                 <configuration>
                     <includes>
-                        <include>**/TestRunner.class</include>
+                        <include>**/TestRunner.java</include>
                     </includes>
                 </configuration>
             </plugin>

@@ -22,7 +22,7 @@ public class WebDriverFactory {
 
     private void setWebDriver() {
         //Set download directory of webdriver to <drivers>
-        WebDriverManager.config().setTargetPath("drivers");
+        WebDriverManager.config().setTargetPath("../drivers");
 
         //Initiate a new webdriver instance base on browserName
         Class<? extends WebDriver> driverClass;
