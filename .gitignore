@@ -2,3 +2,7 @@
 /.idea
 /target
 /drivers
+/fw-core/target
+/fw-core/fw-core.iml
+/fw-cucumber/fw-cucumber.iml
+/fw-cucumber/target
