@@ -10,15 +10,17 @@ import static stepdefs.BaseStep.loginPage;
 public class LoginStep extends BasePage {
 
     @Given("^user is on homepage$")
-    public void user_is_on_homepage(){}
+    public void user_is_on_homepage() {
+        //
+    }
 
     @When("^user navigates to Login Page$")
-    public void user_navigates_to_Login_Page(){
+    public void user_navigates_to_Login_Page() {
         loginPage.clickLogin();
     }
 
     @When("^user enters username and Password$")
-    public void user_enters_username_and_Password(){
+    public void user_enters_username_and_Password() {
         loginPage.enterUserNamedAndPassWord();
         loginPage.clickSubmit();
     }

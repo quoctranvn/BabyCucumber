@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 
 import static com.qt.core.config.element.factory.internal.ImplementedByProcessor.getWrapperClass;
 
-public class ElementHandler implements InvocationHandler {
+class ElementHandler implements InvocationHandler {
     private final ElementLocator locator;
     private final Class<?> wrappingType;
 

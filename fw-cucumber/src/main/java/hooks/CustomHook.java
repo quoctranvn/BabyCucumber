@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import runner.TestRunner;
 
 public class CustomHook {
-    private WebDriver webDriver = TestRunner.webDriver;
+    private final WebDriver webDriver = TestRunner.webDriver;
 
     @Before
     public void beforeScenario() {

@@ -2,9 +2,10 @@ package com.qt.core.config.element.factory.internal;
 
 import com.qt.core.config.element.Element;
 
-public final class ImplementedByProcessor {
+final class ImplementedByProcessor {
 
-    private ImplementedByProcessor() { }
+    private ImplementedByProcessor() {
+    }
 
     public static <T> Class<?> getWrapperClass(Class<T> iface) {
         if (iface.isAnnotationPresent(ImplementedBy.class)) {

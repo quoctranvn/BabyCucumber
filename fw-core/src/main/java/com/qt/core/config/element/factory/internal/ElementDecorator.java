@@ -16,17 +16,18 @@ import org.openqa.selenium.support.pagefactory.internal.LocatingElementListHandl
 
 import java.lang.reflect.*;
 import java.util.List;
+import java.util.Objects;
 
 public class ElementDecorator implements FieldDecorator {
-    private ElementLocatorFactory elementLocatorFactory;
+    private final ElementLocatorFactory elementLocatorFactory;
 
-    public ElementDecorator (ElementLocatorFactory elementLocatorFactory) {
+    public ElementDecorator(ElementLocatorFactory elementLocatorFactory) {
         this.elementLocatorFactory = elementLocatorFactory;
     }
 
     @Override
     public Object decorate(ClassLoader classLoader, Field field) {
-        if (!(WebElement.class.isAssignableFrom(field.getType()) || isDecoratableList(field))) {
+        if (!(WebElement.class.isAssignableFrom(field.getType()) || isDecoratetableList(field))) {
             return null;
         }
 
@@ -48,7 +49,7 @@ public class ElementDecorator implements FieldDecorator {
             return proxyForLocator(classLoader, fieldType, locator);
         } else if (List.class.isAssignableFrom(fieldType)) {
             Class<?> erasureClass = getErasureClass(field);
-            return proxyForListLocator(classLoader, erasureClass, locator);
+            return proxyForListLocator(classLoader, Objects.requireNonNull(erasureClass), locator);
         } else {
             return null;
         }
@@ -64,7 +65,7 @@ public class ElementDecorator implements FieldDecorator {
         return (Class<?>) ((ParameterizedType) genericType).getActualTypeArguments()[0];
     }
 
-    private boolean isDecoratableList(Field field) {
+    private boolean isDecoratetableList(Field field) {
         if (!List.class.isAssignableFrom(field.getType())) {
             return false;
         }
@@ -78,15 +79,12 @@ public class ElementDecorator implements FieldDecorator {
             return false;
         }
 
-        if (field.getAnnotation(FindBy.class) == null && field.getAnnotation(FindBys.class) == null &&
-                field.getAnnotation(FindAll.class) == null) {
-            return false;
-        }
-
-        return true;
+        return field.getAnnotation(FindBy.class) != null || field.getAnnotation(FindBys.class) != null ||
+                field.getAnnotation(FindAll.class) != null;
     }
 
-    protected <T> T proxyForLocator(ClassLoader loader, Class<T> interfaceType, ElementLocator locator) {
+    @SuppressWarnings("deprecation")
+    private <T> T proxyForLocator(ClassLoader loader, Class<T> interfaceType, ElementLocator locator) {
         InvocationHandler handler = new ElementHandler(interfaceType, locator);
 
         T proxy;
@@ -95,7 +93,8 @@ public class ElementDecorator implements FieldDecorator {
         return proxy;
     }
 
-    protected <T> List<T> proxyForListLocator(ClassLoader loader, Class<T> interfaceType, ElementLocator locator) {
+    @SuppressWarnings("unchecked")
+    private <T> List<T> proxyForListLocator(ClassLoader loader, Class<T> interfaceType, ElementLocator locator) {
         InvocationHandler handler;
         if (interfaceType.getAnnotation(FindBy.class) != null) {
             handler = new ElementListHandler(interfaceType, locator);

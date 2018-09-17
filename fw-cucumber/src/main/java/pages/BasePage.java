@@ -5,6 +5,6 @@ import runner.TestRunner;
 
 
 public abstract class BasePage {
-    protected static WebDriver webDriver = TestRunner.webDriver;
+    protected static final WebDriver webDriver = TestRunner.webDriver;
 
 }

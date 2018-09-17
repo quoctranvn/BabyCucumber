@@ -15,11 +15,11 @@ import java.util.concurrent.TimeUnit;
 @CucumberOptions(
         features = "classpath:features",
         glue = {"stepdefs", "hooks"},
-        plugin = { "pretty", "html:target/cucumber-html-reports"}
+        plugin = {"pretty", "html:target/cucumber-html-reports"}
 )
 
 public class TestRunner {
-    public static WebDriver webDriver = new WebDriverFactory().getWebDriver();
+    public static final WebDriver webDriver = new WebDriverFactory().getWebDriver();
 
     @BeforeClass
     public static void beforeSuite() {

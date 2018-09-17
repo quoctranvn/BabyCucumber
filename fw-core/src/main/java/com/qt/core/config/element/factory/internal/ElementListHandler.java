@@ -13,7 +13,7 @@ import java.util.List;
 
 import static com.qt.core.config.element.factory.internal.ImplementedByProcessor.getWrapperClass;
 
-public class ElementListHandler implements InvocationHandler {
+class ElementListHandler implements InvocationHandler {
     private final ElementLocator locator;
     private final Class<?> wrappingType;
 
@@ -27,7 +27,7 @@ public class ElementListHandler implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] objects) throws Throwable {
-        List<Object> wrappedList = new ArrayList<Object>();
+        List<Object> wrappedList = new ArrayList<>();
         Constructor<?> cons = wrappingType.getConstructor(WebElement.class);
         for (WebElement element : locator.findElements()) {
             Object thing = cons.newInstance(element);

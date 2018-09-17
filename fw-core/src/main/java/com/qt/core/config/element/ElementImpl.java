@@ -98,6 +98,7 @@ public class ElementImpl implements Element {
         return webElement.getScreenshotAs(outputType);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public Coordinates getCoordinates() {
         return ((Locatable) webElement).getCoordinates();
