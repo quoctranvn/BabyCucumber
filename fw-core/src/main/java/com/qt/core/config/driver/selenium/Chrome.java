@@ -24,7 +24,7 @@ public class Chrome implements SeleniumDriver {
 
     @Override
     public WebDriver createDriver() {
-        new Browser("chrome");
+        new DriverExecutable("chrome");
         this.capabilities.setCapability(ChromeOptions.CAPABILITY, getOptions());
         return new ChromeDriver(this.capabilities.merge(getCapabilities()));
     }

@@ -5,17 +5,17 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 import java.io.File;
 
-public class Browser {
+public class DriverExecutable {
 
     private String browserName;
     private String driverVersion;
 
-    public Browser(String browserName) {
+    public DriverExecutable(String browserName) {
         this.browserName = browserName;
         setWebDriver();
     }
 
-    public Browser(String browserName, String driverVersion) {
+    public DriverExecutable(String browserName, String driverVersion) {
         this.driverVersion = driverVersion;
         this.browserName = browserName;
         setWebDriver();
