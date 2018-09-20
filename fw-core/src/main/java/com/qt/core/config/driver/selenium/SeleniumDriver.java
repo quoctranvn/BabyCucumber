@@ -7,6 +7,4 @@ public interface SeleniumDriver {
     WebDriver createDriver();
 
     public void setDriverOptions(Object options);
-
-    public void setCapabilities(Object capabilities);
 }

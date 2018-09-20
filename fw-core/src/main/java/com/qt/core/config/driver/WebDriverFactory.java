@@ -3,6 +3,7 @@ package com.qt.core.config.driver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
 public class WebDriverFactory {
@@ -31,6 +32,10 @@ public class WebDriverFactory {
             switch (browserName.toLowerCase().trim()) {
                 case "ie":
                     driverClass = InternetExplorerDriver.class;
+                    WebDriverManager.getInstance(driverClass).setup();
+                    break;
+                case "firefox":
+                    driverClass = FirefoxDriver.class;
                     WebDriverManager.getInstance(driverClass).setup();
                     break;
                 default:

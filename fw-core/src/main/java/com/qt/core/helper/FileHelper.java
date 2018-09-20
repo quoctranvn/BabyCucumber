@@ -2,7 +2,7 @@ package com.qt.core.helper;
 
 public class FileHelper {
 
-    public static String getFilePath(String name, java.io.File file) {
+    public String getFilePath(String name, java.io.File file) {
         java.io.File[] list = file.listFiles();
         if (list != null) {
             for (java.io.File fil : list) {
