@@ -1,10 +1,13 @@
-package com.qt.core.config.driver.selenium;
+package com.qt.core.config.driver.selenium.browsers;
 
+import com.qt.core.config.driver.selenium.DriverConfig;
+import com.qt.core.config.driver.selenium.DriverExecutable;
+import com.qt.core.config.driver.selenium.SeleniumDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
 
-public class IEDriverConfig extends DriverConfig implements SeleniumDriver{
+public class IEDriverConfig extends DriverConfig implements SeleniumDriver {
 
     private InternetExplorerOptions options;
 

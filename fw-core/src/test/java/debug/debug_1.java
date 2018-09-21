@@ -1,10 +1,4 @@
-import com.qt.core.config.driver.selenium.ChromeDriverConfig;
-import com.qt.core.config.driver.selenium.FirefoxDriverConfig;
-import com.qt.core.config.driver.selenium.IEDriverConfig;
-import com.qt.core.helper.FileHelper;
-
-import java.io.File;
-import java.util.List;
+import com.qt.core.config.driver.selenium.browsers.IEDriverConfig;
 
 public class debug_1 {
 
