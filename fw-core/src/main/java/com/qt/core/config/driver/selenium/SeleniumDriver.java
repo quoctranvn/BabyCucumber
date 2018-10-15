@@ -6,5 +6,5 @@ public interface SeleniumDriver {
 
     WebDriver createDriver();
 
-    public void setDriverOptions(Object options);
+    void setDriverOptions(Object options);
 }

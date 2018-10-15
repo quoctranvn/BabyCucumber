@@ -1,7 +1,5 @@
 package runner;
 
-
-import com.qt.core.config.driver.WebDriverFactory;
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 import org.junit.AfterClass;
@@ -11,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
 
+import static com.qt.core.config.driver.WebDriverFactory.getWebDriver;
+
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "classpath:features",
@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 )
 
 public class TestRunner {
-    public static final WebDriver webDriver = new WebDriverFactory().getWebDriver();
+    public static final WebDriver webDriver = getWebDriver();
 
     @BeforeClass
     public static void beforeSuite() {

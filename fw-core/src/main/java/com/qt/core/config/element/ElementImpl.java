@@ -1,5 +1,7 @@
 package com.qt.core.config.element;
 
+import com.qt.core.config.logger.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.internal.Coordinates;
 import org.openqa.selenium.internal.Locatable;
@@ -7,6 +9,8 @@ import org.openqa.selenium.internal.Locatable;
 import java.util.List;
 
 public class ElementImpl implements Element {
+    Logger log = LoggerFactory.getInstance().getLogger(getClass());
+
     private final WebElement webElement;
 
     public ElementImpl(final WebElement webElement) {
@@ -16,6 +20,7 @@ public class ElementImpl implements Element {
     @Override
     public void click() {
         webElement.click();
+        System.out.println("\nClicking on element " + webElement);
     }
 
     @Override
