@@ -19,7 +19,7 @@ public class DriverConfig {
         this.width = 0;
         this.height = 0;
         this.implicitlyWait = 10;
-        this.pageLoadTimeout = 10;
+        this.pageLoadTimeout = 30;
         this.scriptTimeout = 10;
     }
 

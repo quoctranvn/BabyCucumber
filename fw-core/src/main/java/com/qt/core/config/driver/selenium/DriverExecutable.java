@@ -2,7 +2,6 @@ package com.qt.core.config.driver.selenium;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriverService;
-import org.openqa.selenium.edge.EdgeDriverService;
 import org.openqa.selenium.firefox.GeckoDriverService;
 import org.openqa.selenium.ie.InternetExplorerDriverService;
 
@@ -24,26 +23,24 @@ public class DriverExecutable {
 
     private void setDriverExecutable() {
         //Set directory that contains webdrivers to .\drivers
-        WebDriverManager.config().setTargetPath("drivers");
+        WebDriverManager.config().setTargetPath("..\\drivers");
 
         //Initiate new webdriver instance base on browserName
         String pathToDriver;
         switch(browserName.toLowerCase().trim()) {
             case "chrome":
-                if (driverVersion == null) {
+                if (driverVersion == null)
                     WebDriverManager.chromedriver().setup();
-                } else {
+                else
                     WebDriverManager.chromedriver().version(driverVersion).setup();
-                }
                 pathToDriver = WebDriverManager.chromedriver().getBinaryPath();
                 System.setProperty(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, pathToDriver);
                 break;
             case "firefox":
-                if (driverVersion == null) {
+                if (driverVersion == null)
                     WebDriverManager.firefoxdriver().setup();
-                } else {
+                else
                     WebDriverManager.firefoxdriver().version(driverVersion).setup();
-                }
                 pathToDriver = WebDriverManager.firefoxdriver().getBinaryPath();
                 System.setProperty(GeckoDriverService.GECKO_DRIVER_EXE_PROPERTY, pathToDriver);
                 break;
@@ -57,11 +54,10 @@ public class DriverExecutable {
 //                System.setProperty(EdgeDriverService.EDGE_DRIVER_EXE_PROPERTY, pathToDriver);
 //                break;
             default:
-                if (driverVersion == null) {
+                if (driverVersion == null)
                     WebDriverManager.iedriver().setup();
-                } else {
+                else
                     WebDriverManager.iedriver().version(driverVersion).setup();
-                }
                 pathToDriver = WebDriverManager.iedriver().getBinaryPath();
                 System.setProperty(InternetExplorerDriverService.IE_DRIVER_EXE_PROPERTY, pathToDriver);
         }

@@ -5,32 +5,63 @@ import com.qt.core.config.driver.selenium.browsers.FirefoxDriverConfig;
 import com.qt.core.config.driver.selenium.browsers.IEDriverConfig;
 import org.openqa.selenium.WebDriver;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class WebDriverFactory {
-    private volatile static WebDriver webDriver;
-    //    private String browserName = System.getProperty("browser");//Get browser value from cmd
-    private static final String browserName = "chrome";
+
+    private static WebDriverFactory webDriverFactory;
+    private Map<Long, WebDriver> driverStorage = new HashMap<>();
+    private WebDriver webDriver;
 
     private WebDriverFactory() { }
 
-    public static WebDriver getWebDriver() {
-        System.out.println("========================= Web-driver: " + webDriver + "  ===============================");
-        if (webDriver == null || String.valueOf(webDriver).contains("null"))
-            synchronized (WebDriverFactory.class) {
-                setWebDriver();
-            }
-        return webDriver;
+    public static synchronized WebDriverFactory instance() {
+        if(webDriverFactory == null) {
+            webDriverFactory = new WebDriverFactory();
+        }
+        return webDriverFactory;
     }
 
-    private static void setWebDriver() {
+    public WebDriver createWebDriver(String browserName) {
         switch (browserName.toLowerCase().trim()) {
             case "ie":
                 webDriver = new IEDriverConfig().createDriver();
-               break;
+                break;
             case "firefox":
                 webDriver = new FirefoxDriverConfig().createDriver();
-               break;
+                break;
             default:
                 webDriver = new ChromeDriverConfig().createDriver();
         }
+
+        setDriverStorage(webDriver);
+
+        return webDriver;
+    }
+
+    private void setDriverStorage(WebDriver webDriver) {
+        System.out.println("-------------------- Current Thread ID: " + Thread.currentThread().getId());
+        System.out.println("-------------------- Current Webdriver: " + webDriver);
+        driverStorage.put(Thread.currentThread().getId(), webDriver);
+    }
+
+    public WebDriver getWebDriver() {
+        if (driverStorage.size() == 0)
+            System.out.println("*****Error in creating Thread id " + Thread.currentThread().getId());
+
+        if (driverStorage.containsKey(Thread.currentThread().getId()))
+            return driverStorage.get(Thread.currentThread().getId());
+
+        return driverStorage.get(0);
+    }
+
+    public void disposeWebDriver() {
+        if (driverStorage.containsKey(Thread.currentThread().getId())) {
+            System.out.println("-------------------- Disposing Thread ID " + Thread.currentThread().getId());
+            driverStorage.get(Thread.currentThread().getId()).quit();
+        }
+        driverStorage.remove(Thread.currentThread().getId());
     }
 }
+

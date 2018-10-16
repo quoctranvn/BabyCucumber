@@ -1,6 +1,5 @@
 package pages;
 
-
 import com.qt.core.config.element.Element;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;

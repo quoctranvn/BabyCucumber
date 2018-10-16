@@ -14,10 +14,10 @@ public class IEDriverConfig extends DriverConfig implements SeleniumDriver {
     private InternetExplorerOptions getOptions () {
         if (options == null) {
             options = new InternetExplorerOptions();
+            options.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);
         }
         return options;
     }
-
 
     @Override
     public WebDriver createDriver() {

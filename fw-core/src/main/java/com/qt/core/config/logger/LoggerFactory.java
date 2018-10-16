@@ -2,9 +2,7 @@ package com.qt.core.config.logger;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-
 import java.io.Serializable;
-
 
 public class LoggerFactory implements Serializable {
 

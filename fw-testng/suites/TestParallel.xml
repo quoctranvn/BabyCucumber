@@ -1,0 +1,29 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite" parallel="tests">
+
+    <test name="Test1">
+
+        <parameter name="browser" value="chrome" />
+
+        <classes>
+
+            <class name="UI.CheckLogin" />
+
+        </classes>
+
+    </test>
+
+    <test name="Test2">
+
+        <parameter name="browser" value="chrome" />
+
+        <classes>
+
+            <class name="UI.CheckParallel" />
+
+        </classes>
+
+    </test>
+
+</suite>

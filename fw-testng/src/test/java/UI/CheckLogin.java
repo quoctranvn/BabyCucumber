@@ -1,30 +1,38 @@
 package UI;
 
+import com.qt.core.config.driver.WebDriverFactory;
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import static pages.BasePage.loginPage;
-import static pages.BasePage.webDriver;
 
 public class CheckLogin {
 
+    private WebDriver webDriver;
+
+    @BeforeTest
+    @Parameters("browser")
+    private void beforeTest(String browser) {
+        webDriver = WebDriverFactory.instance().createWebDriver(browser);
+    }
+
+    @AfterTest
+    private void afterTest() {
+        WebDriverFactory.instance().disposeWebDriver();
+    }
+
     @Test
-    public void user_is_on_homepage() {
+    public void test() {
         webDriver.get("http://automationpractice.com/index.php");
-    }
 
-    @Test
-    public void user_navigates_to_Login_Page() {
         loginPage.clickLogin();
-    }
 
-    @Test
-    public void user_enters_username_and_Password() {
         loginPage.enterUserNamedAndPassWord();
         loginPage.clickSubmit();
-    }
 
-    @Test
-    public void success_message_is_displayed() {
         loginPage.verifyInfo();
     }
 }
