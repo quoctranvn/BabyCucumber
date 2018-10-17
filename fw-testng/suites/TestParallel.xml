@@ -2,7 +2,7 @@
 
 <suite name="Suite" parallel="tests">
 
-    <test name="Test1">
+    <test name="TestChrome">
 
         <parameter name="browser" value="chrome" />
 
@@ -14,9 +14,9 @@
 
     </test>
 
-    <test name="Test2">
+    <test name="TestIE">
 
-        <parameter name="browser" value="chrome" />
+        <parameter name="browser" value="ie" />
 
         <classes>
 

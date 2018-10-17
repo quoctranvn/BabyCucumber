@@ -17,6 +17,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <mavencompiler.version>3.8.0</mavencompiler.version>
         <mavensurefire.version>2.22.0</mavensurefire.version>
+
         <java.version>1.8</java.version>
         <wdm.version>2.2.4</wdm.version>
         <selenium.version>3.14.0</selenium.version>

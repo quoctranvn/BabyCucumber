@@ -20,7 +20,6 @@ public class ElementImpl implements Element {
     @Override
     public void click() {
         webElement.click();
-        System.out.println("\nClicking on element " + webElement);
     }
 
     @Override
