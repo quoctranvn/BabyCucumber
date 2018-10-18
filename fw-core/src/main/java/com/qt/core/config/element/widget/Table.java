@@ -5,7 +5,7 @@ import com.qt.core.config.element.factory.internal.ImplementedBy;
 import org.openqa.selenium.WebElement;
 
 @ImplementedBy(TableImpl.class)
-interface Table extends Element {
+public interface Table extends Element {
 
     int getRowCount();
 

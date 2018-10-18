@@ -5,7 +5,7 @@ import com.qt.core.config.element.Element;
 import com.qt.core.config.element.factory.internal.ImplementedBy;
 
 @ImplementedBy(CheckBoxImpl.class)
-interface CheckBox extends Element {
+public interface CheckBox extends Element {
 
     void toggle();
 

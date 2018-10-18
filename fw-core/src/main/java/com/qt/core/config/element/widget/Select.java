@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 @ImplementedBy(SelectImpl.class)
-interface Select extends Element {
+public interface Select extends Element {
 
     boolean isMultiple();
 
