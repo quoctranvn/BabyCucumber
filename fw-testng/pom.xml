@@ -40,6 +40,11 @@
             <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>${reflect.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

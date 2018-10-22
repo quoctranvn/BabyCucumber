@@ -28,6 +28,8 @@
         <cucumber-testng.version>1.2.5</cucumber-testng.version>
         <testng.version>6.14.3</testng.version>
         <guice.version>4.2.1</guice.version>
+        <reflect.version>0.9.11</reflect.version>
+        <guava.version>26.0-jre</guava.version>
     </properties>
 
     <modules>

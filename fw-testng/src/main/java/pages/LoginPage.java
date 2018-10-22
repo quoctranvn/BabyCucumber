@@ -1,9 +1,11 @@
 package pages;
 
+import com.qt.core.config.annotation.PageObject;
 import com.qt.core.config.element.Element;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+@PageObject
 public class LoginPage {
 
     public LoginPage(WebDriver webDriver) { }

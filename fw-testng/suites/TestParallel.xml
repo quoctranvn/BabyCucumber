@@ -1,29 +1,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Suite" parallel="tests">
+<suite name="Suite" parallel="classes" thread-count="2">
 
-    <test name="TestChrome">
-
-        <parameter name="browser" value="chrome" />
-
+    <test name="TestParallel">
         <classes>
-
             <class name="UI.CheckLogin" />
-
-        </classes>
-
-    </test>
-
-    <test name="TestIE">
-
-        <parameter name="browser" value="ie" />
-
-        <classes>
-
             <class name="UI.CheckParallel" />
-
         </classes>
-
     </test>
-
 </suite>
