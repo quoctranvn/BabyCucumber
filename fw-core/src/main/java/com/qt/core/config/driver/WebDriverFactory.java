@@ -34,8 +34,9 @@ public class WebDriverFactory {
             case "firefox":
                 webDriver = new FirefoxDriverConfig().createDriver();
                 break;
-            default:
+            case "chrome":
                 webDriver = new ChromeDriverConfig().createDriver();
+                break;
         }
 
         setDriverStorage(webDriver);
@@ -59,14 +60,12 @@ public class WebDriverFactory {
 
     public void disposeWebDriver() {
         if (driverStorage.containsKey(Thread.currentThread().getId())) {
-            System.out.println("-------------------- Disposing Thread ID " + Thread.currentThread().getId());
             driverStorage.get(Thread.currentThread().getId()).quit();
         }
         driverStorage.remove(Thread.currentThread().getId());
     }
 
     public void disposeAllDriver() {
-        System.out.println("-------------------- Disposing ALL");
         for (Map.Entry<Long, WebDriver> driver : driverStorage.entrySet()) {
             WebDriver value = driver.getValue();
             value.quit();

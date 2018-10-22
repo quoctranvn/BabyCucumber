@@ -1,19 +1,18 @@
 package UI;
 
 import org.testng.annotations.Test;
-import pages.BasePage;
+import pages.BaseTest;
+import pages.LoginPage;
 
-public class CheckLogin extends BasePage {
+public class CheckLogin extends BaseTest{
 
     @Test
     public void test() {
-        webDriver.get("http://automationpractice.com/index.php");
-
+        LoginPage loginPage = new LoginPage();
+        loginPage.openHomePage();
         loginPage.clickLogin();
-
         loginPage.enterUserNamedAndPassWord();
         loginPage.clickSubmit();
-
         loginPage.verifyInfo();
     }
 }

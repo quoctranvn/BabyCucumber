@@ -14,7 +14,7 @@ public class MethodsInterceptor<T> implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        System.out.println("Invoked method : " + method.getName() +" with params: " + t);
+        System.out.println("Info : " + method.getName() +" with params: " + t);
         return method.invoke(t, args);
     }
 

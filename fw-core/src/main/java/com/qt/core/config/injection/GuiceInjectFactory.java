@@ -1,27 +1,26 @@
 package com.qt.core.config.injection;
 
-import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.google.inject.Module;
 
 public class GuiceInjectFactory {
 
-    private volatile static GuiceInjectFactory instance;
+    private volatile static ThreadLocal<GuiceInjectFactory> instance = new ThreadLocal<>();
 
-    private Injector injector;
+    Injector injector;
 
     public static GuiceInjectFactory instance() {
         if(instance == null) {
             synchronized (GuiceInjectFactory.class) {
-                if(instance == null) {
-                    instance = new GuiceInjectFactory();
+                if(instance.get() == null) {
+                    instance.set(new GuiceInjectFactory());
                 }
             }
         }
-        return instance;
+        return instance.get();
     }
 
-    public void createInject(Module...modules) {
-        injector = Guice.createInjector(modules);
+    public <T> T createObjectInstance(Class<T> cls) {
+        Injector injectInstance = instance.get().injector;
+        return injectInstance.getInstance(cls);
     }
 }

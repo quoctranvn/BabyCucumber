@@ -1,14 +1,14 @@
 package pages;
 
+import com.qt.core.base.BasePage;
 import com.qt.core.config.annotation.PageObject;
 import com.qt.core.config.element.Element;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 @PageObject
-public class LoginPage {
+public class LoginPage extends BasePage {
 
-    public LoginPage(WebDriver webDriver) { }
+    private final String url = "http://automationpractice.com/index.php";
 
     @FindBy(linkText = "Sign in")
     private Element btn_Login;
@@ -24,6 +24,10 @@ public class LoginPage {
 
     @FindBy(css = ".info-account")
     private Element lbl_AccountInfo;
+
+    public void openHomePage() {
+        this.openURL(this.url);
+    }
 
     public void clickLogin() {
         btn_Login.click();
